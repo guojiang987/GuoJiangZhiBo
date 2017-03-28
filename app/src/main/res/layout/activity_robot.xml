@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_robot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.activity.RobotActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_robot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        ></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="#00ffffff"
+            android:scaleType="centerInside"
+            android:src="@mipmap/icon_smile" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:background="#00ffffff"
+            android:scaleType="centerInside"
+            android:src="@mipmap/btn_picture_nor" />
+
+        <EditText
+            android:id="@+id/edit_robot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="8"
+            android:singleLine="true"
+            android:background="@mipmap/btn_bg_pre_o"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:background="@drawable/sendbt"
+            android:text="发送" />
+    </LinearLayout>
+
+
+</LinearLayout>

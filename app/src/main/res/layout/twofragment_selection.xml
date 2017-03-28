@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.fragment.TwoFragments.SelectionFragment">
+
+
+    <com.rose.guojiangzhibo.pulltorefresh.PullToRefreshListView
+        android:id="@+id/listview_selection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    </com.rose.guojiangzhibo.pulltorefresh.PullToRefreshListView>
+
+
+</LinearLayout>

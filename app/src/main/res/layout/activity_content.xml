@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.rose.guojiangzhibo.activity.ContentActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ListView
+            android:id="@+id/commments_user"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"></ListView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:clickable="true"
+                    android:id="@+id/expressionbt_comments"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/icon_smile" />
+
+                <ImageButton
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:id="@+id/addpic"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="#00ffffff"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/btn_picture_nor" />
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="8"
+                    android:singleLine="true"
+                    android:background="@mipmap/btn_bg_pre_o"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/send"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:background="@drawable/sendbt"
+                    android:text="发送" />
+            </LinearLayout>
+        </ScrollView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/expressionview"
+        android:visibility="gone"
+         android:layout_width="match_parent"
+        android:layout_height="200dp"></android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+</LinearLayout>

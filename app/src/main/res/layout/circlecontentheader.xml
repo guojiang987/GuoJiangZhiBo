@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp">
+
+    <ImageView
+        android:id="@+id/bg_circle"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/bg_fan_detail_head"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#99888888"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/popularity"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/popularitycount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5656565"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#99888888"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitation"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/invitationcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5656565"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#99888888"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fans"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/fanscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5656565"
+                android:textColor="#ffffffff" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/imgreturn"
+        android:background="#00000000"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/icon_return" />
+
+    <ImageButton
+        android:background="#00000000"
+        android:id="@+id/imgmore"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/imgreturn"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/btn_more_quan" />
+
+
+    <ImageView
+        android:id="@+id/userheaderimg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/bg_user_default"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/userheaderimg"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/circlename"
+            android:textColor="#ffffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="巧克力先生的后厨"
+            android:layout_marginLeft="17dp" />
+
+        <TextView
+            android:textColor="#ffffffff"
+            android:id="@+id/nikename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="圈主 程远-巧克力先生"
+            android:layout_marginLeft="17dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/detailcircle"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="160dp"
+        android:textSize="10dp"
+        android:textColor="#ffffffff"
+        android:text="欢迎大家"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

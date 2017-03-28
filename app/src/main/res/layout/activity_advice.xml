@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_advice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.activity.AdviceActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/btn_back_pre" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="意见反馈"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="hi，欢迎您给我们提意见噢，记得留下您的qq或电话或微信邮箱，以便于我们及时与您联系沟通" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#F0F0F0" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#fff"
+        android:hint="意见输入："
+        android:gravity="left" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#F0F0F0" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#fff"
+        android:gravity="center_vertical"
+        android:hint="您的联系方式：方便我们能及时联系您哦" />
+
+    <Button
+        android:id="@+id/button_four_advice"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_horizontal|center_vertical"
+        android:onClick="onClick"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:text="提交反馈"
+        android:textColor="#fff" />
+
+</LinearLayout>

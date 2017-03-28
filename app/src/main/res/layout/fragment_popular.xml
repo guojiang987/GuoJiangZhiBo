@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.fragment.onefragments.popular.PopularFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:id="@+id/image_rankexp"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:src="@mipmap/icon_rank_exp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="人气榜为收到鲜花的前10名的播主"
+            android:layout_toEndOf="@+id/image_rankexp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listview_popular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>

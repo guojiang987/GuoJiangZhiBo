@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.fragment.ThreeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimaryDark">
+
+        <View
+            android:id="@+id/viewcenter"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/intrest_threefrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/viewcenter"
+            android:clickable="true"
+            android:paddingRight="20dp"
+            android:text="未关注"
+            android:textColor="#ffbbbbbb"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/nointrest_threefrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/viewcenter"
+            android:clickable="true"
+            android:paddingLeft="20dp"
+            android:text="已关注"
+            android:textColor="#ffbbbbbb"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/ingoreAll_threefrag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:text="忽略全部"
+            android:textColor="#fff"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayut_threefrag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"></FrameLayout>
+
+
+</LinearLayout>

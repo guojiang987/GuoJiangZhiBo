@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#DA500E</color>
+    <color name="colorAccent">#0d0d0e</color>
+    <color name="textselecttrue">#fff</color>
+    <color name="textselectfaluse">#999</color>
+    <color name="twofragmenttitle">#ffbbbbbb</color>
+</resources>

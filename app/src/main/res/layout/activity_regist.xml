@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_regist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg2"
+    tools:context="com.rose.guojiangzhibo.activity.RegistActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="200dp"
+        android:background="#fff" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="170dp"
+        android:src="@mipmap/ic_login_account" />
+
+    <EditText
+        android:id="@+id/edit_username_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="170dp"
+        android:background="@null"
+        android:hint="请输入邮箱/手机号"
+        android:textColorHint="#fff"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="250dp"
+        android:background="#fff" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="220dp"
+        android:src="@mipmap/ic_login_pwd" />
+
+    <EditText
+        android:id="@+id/edit_password_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="220dp"
+        android:background="@null"
+        android:hint="请输入密码"
+        android:textColorHint="#fff"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:inputType="numberPassword"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/bt_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="320dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="onClickregist"
+        android:text="注册"
+        android:textColor="#fff" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="270dp"
+        android:src="@mipmap/ic_login_pwd" />
+
+    <EditText
+        android:id="@+id/editpassagain_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="270dp"
+        android:background="@null"
+        android:hint="请再次输入密码"
+        android:textColorHint="#fff"
+        android:inputType="numberPassword"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="300dp"
+        android:background="#fff" />
+
+
+</RelativeLayout>

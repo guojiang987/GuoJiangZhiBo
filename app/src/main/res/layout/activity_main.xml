@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.rose.guojiangzhibo.MainActivity">
+
+
+    <FrameLayout
+        android:layout_above="@+id/rg_main_menus"
+        android:id="@+id/framelayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RadioGroup
+        android:id="@+id/rg_main_menus"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_main_one"
+            style="@style/rb_buttonmenus"
+            android:checked="true"
+            android:drawableTop="@drawable/rb_one_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_main_two"
+            style="@style/rb_buttonmenus"
+            android:drawableTop="@drawable/rb_two_selector" />
+
+        <TextView style="@style/rb_buttonmenus" />
+
+        <RadioButton
+            android:id="@+id/rb_main_three"
+            style="@style/rb_buttonmenus"
+            android:drawableTop="@drawable/rb_three_selector" />
+
+        <RadioButton
+            android:id="@+id/rb_main_four"
+            style="@style/rb_buttonmenus"
+            android:drawableTop="@drawable/rb_four_selector" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/rtmppush"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/btn_camera_nor" />
+</RelativeLayout>

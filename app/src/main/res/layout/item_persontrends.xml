@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/image_perosonheader"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:src="@mipmap/bg_user_default" />
+
+        <TextView
+            android:id="@+id/text_personname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="80dp"
+            android:paddingTop="10dp"
+            android:text="昵称" />
+
+        <TextView
+            android:id="@+id/text_persontime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="80dp"
+            android:paddingTop="30dp"
+            android:text="？月？号" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/image_personpicture"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/icon_living_new_head_default" />
+
+    <TextView
+        android:id="@+id/text_personmood"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ellipsize="end"
+        android:gravity="center|left"
+        android:singleLine="true"
+        android:text="今天的心情很不错" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:id="@+id/image_praise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:paddingTop="7dp"
+            android:src="@mipmap/btn_praise_nor" />
+
+        <TextView
+            android:id="@+id/text_praisenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_praise"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="0" />
+
+        <ImageView
+            android:id="@+id/image_persontalk"
+            android:layout_width="55dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/text_praisenumber"
+            android:clickable="true"
+            android:paddingLeft="30dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/btn_talk_foot_nor" />
+
+        <TextView
+            android:id="@+id/text_talknumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/image_persontalk"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:text="0" />
+
+        <ImageView
+            android:id="@+id/image_personshare"
+            android:layout_width="55dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/text_talknumber"
+            android:clickable="true"
+            android:paddingLeft="30dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/share_nor" />
+
+        <ImageView
+            android:id="@+id/image_personmore"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/icon_etc" />
+    </RelativeLayout>
+</LinearLayout>

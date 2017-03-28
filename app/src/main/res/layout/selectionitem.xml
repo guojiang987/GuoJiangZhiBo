@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:background="#ffF6F1EA"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:clickable="true"
+
+        android:id="@+id/item1_selection"
+        android:layout_margin="5dp"
+        android:paddingBottom="10dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@drawable/radios"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/icon_living_new_head_default"
+            android:id="@+id/img1_selection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title1_selection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/content1_selection" />
+
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/btn_praise_nor"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/praise1_selection"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/btn_comments_nor"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/comment1_selection"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item2_selection"
+        android:clickable="true"
+        android:layout_margin="5dp"
+        android:paddingBottom="10dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@drawable/radios"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@mipmap/icon_living_new_head_default"
+            android:id="@+id/img2_selection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title2_selection" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/content2_selection" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/btn_praise_nor"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/praise2_selection"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:src="@mipmap/btn_comments_nor"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/comment2_selection"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="0"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

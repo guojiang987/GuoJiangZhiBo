@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.fragment.onefragments.rich.RichFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_richfragment"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"></android.support.design.widget.TabLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:id="@+id/image_rankexp"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:src="@mipmap/icon_rank_exp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="日播为当天获得泡泡数前10的播主，每天0点清空重新统计"
+            android:layout_toEndOf="@+id/image_rankexp" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_richfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

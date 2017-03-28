@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.fragment.OneFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!-- android:textColor="@drawable/text_onefragment"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#DA500E"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image_search"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:src="@mipmap/abc_ic_search_api_mtrl_alpha" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/text_onefragment_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="onclick"
+                android:paddingRight="10dp"
+                android:text="@string/text_onefragment_one"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text_onefragment_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="onclick"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/text_onefragment_two"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/text_onefragment_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:onClick="onclick"
+                android:paddingLeft="10dp"
+                android:text="@string/text_onefragment_three"
+                android:textSize="15dp" />
+            />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_list"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:src="@mipmap/btn_list_nor" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/framelayut_onefragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout><!--RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="10dp"
+android:background="#DA500E">
+
+<ImageView
+    android:id="@+id/image_onefragment_one"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="126dp"
+    android:src="@mipmap/icon_triangle_top" />
+
+<ImageView
+    android:id="@+id/image_onefragment_two"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginStart="175dp"
+    android:src="@mipmap/icon_triangle_top" />
+
+<ImageView
+    android:id="@+id/image_onefragment_three"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+
+    android:layout_alignParentTop="true"
+    android:layout_marginEnd="120dp"
+    android:src="@mipmap/icon_triangle_top" />
+
+</RelativeLayout>-->

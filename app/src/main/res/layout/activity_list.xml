@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_search_back"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rose.guojiangzhibo.activity.ListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#DA500E"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image_listback"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_live_bottom_left_nor" />
+
+        <TextView
+            android:id="@+id/text_liststar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="90dp"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:text="@string/text_searchstar"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/text_listpopular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:text="@string/text_searchpopular"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/text_listrich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            android:onClick="onclick"
+            android:text="@string/text_searchrich"
+            android:textSize="15dp" />
+        />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/framelayout_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</LinearLayout>

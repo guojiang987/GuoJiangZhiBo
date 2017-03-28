@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+<GridLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:columnCount="7">
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f47d"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_2764"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f494"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f44f"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f44a"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f44c"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f44d"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f44e"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f48b"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f414"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f40f"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f43b"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f437"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f418"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f412"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f42f"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f430"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f433"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f436"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f446"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f447"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f448"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f449"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f48a"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f35e"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f353"/>
+    <ImageView
+
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_1f34c"/>
+
+    <ImageView
+         
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:src="@mipmap/emoji_del"/>
+</GridLayout>
+</LinearLayout>
