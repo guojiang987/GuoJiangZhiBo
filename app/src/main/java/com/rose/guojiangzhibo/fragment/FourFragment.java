@@ -78,6 +78,7 @@ public class FourFragment extends Fragment {
     private EditText msgText;
     public static boolean isForeground = false;
 
+
     public FourFragment() {
         // Required empty public constructor
     }
@@ -93,6 +94,7 @@ public class FourFragment extends Fragment {
         getDate();
         return inflate;
     }
+
     private void initView(View inflate) {
         //消息推送
         myincome = (RelativeLayout) inflate.findViewById(R.id.myincome_four);
@@ -183,6 +185,7 @@ public class FourFragment extends Fragment {
         // 启动分享GUI
         oks.show(getActivity());
     }
+
     private void getDate() {
         HttpUtil.getStringAsync(UrlConfigOne.URL_CONTENT_HOTONE, new HttpUtil.RequestCallBack() {
             @Override
@@ -201,34 +204,37 @@ public class FourFragment extends Fragment {
                         cricleFours.add(criclefour);
                     }
                 }
-                x.image().bind(cricleimg, cricleFours.get(0).getData().get(0).getHeadPic(), new Callback.CommonCallback<Drawable>() {
-                    @Override
-                    public void onSuccess(Drawable result) {
-                        if (result != null) {
-                            BitmapDrawable bitmapDrawable = (BitmapDrawable) result;
-                            Bitmap bitmap = bitmapDrawable.getBitmap();
+                if (cricleFours.size() > 0) {
 
-                            cricleHead = RoundHeader.toRoundBitmap(bitmap);
-                            cricleimg.setImageBitmap(cricleHead);
+
+                    x.image().bind(cricleimg, cricleFours.get(0).getData().get(0).getHeadPic(), new Callback.CommonCallback<Drawable>() {
+                        @Override
+                        public void onSuccess(Drawable result) {
+                            if (result != null) {
+                                BitmapDrawable bitmapDrawable = (BitmapDrawable) result;
+                                Bitmap bitmap = bitmapDrawable.getBitmap();
+
+                                cricleHead = RoundHeader.toRoundBitmap(bitmap);
+                                cricleimg.setImageBitmap(cricleHead);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onError(Throwable ex, boolean isOnCallback) {
+                        @Override
+                        public void onError(Throwable ex, boolean isOnCallback) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(CancelledException cex) {
+                        @Override
+                        public void onCancelled(CancelledException cex) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onFinished() {
+                        @Override
+                        public void onFinished() {
 
-                    }
-                });
-
+                        }
+                    });
+                }
             }
 
             @Override
