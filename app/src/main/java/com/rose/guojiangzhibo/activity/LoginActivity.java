@@ -1,13 +1,10 @@
 package com.rose.guojiangzhibo.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rose.guojiangzhibo.MainActivity;
@@ -83,20 +80,24 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         password = edit_password_login.getText() + "";
         try {
             List<User> userall = db.findAll(User.class);
-            for (int i = 0; i < userall.size(); i++) {
-                if (username.equals(userall.get(i).getUsername() + "")) {
-                    if (password.equals(userall.get(i).getPassword() + "")) {
-                        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                        return;
-                    } else {
-                        Toast.makeText(this, "账号或密码不正确", Toast.LENGTH_SHORT).show();
-                        return;
+            if (userall!=null) {
+                for (int i = 0; i < userall.size(); i++) {
+                    if (username.equals(userall.get(i).getUsername() + "")) {
+                        if (password.equals(userall.get(i).getPassword() + "")) {
+                            Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                            return;
+                        } else {
+                            Toast.makeText(this, "账号或密码不正确", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
-                }
 
+                }
+            }else {
+                Toast.makeText(this,"请先注册", Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(this, "账号不存在", Toast.LENGTH_SHORT).show();
         } catch (DbException e) {
