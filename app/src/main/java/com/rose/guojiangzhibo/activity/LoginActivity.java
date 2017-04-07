@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
         password = edit_password_login.getText() + "";
         try {
             List<User> userall = db.findAll(User.class);
-            if (userall!=null) {
+            if (userall != null) {
                 for (int i = 0; i < userall.size(); i++) {
                     if (username.equals(userall.get(i).getUsername() + "")) {
                         if (password.equals(userall.get(i).getPassword() + "")) {
@@ -96,8 +96,8 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                     }
 
                 }
-            }else {
-                Toast.makeText(this,"请先注册", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "请先注册", Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(this, "账号不存在", Toast.LENGTH_SHORT).show();
         } catch (DbException e) {
