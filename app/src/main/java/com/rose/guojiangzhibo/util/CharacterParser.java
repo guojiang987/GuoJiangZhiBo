@@ -1,4 +1,4 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
 
 /**
  * 字母，汉字解析类

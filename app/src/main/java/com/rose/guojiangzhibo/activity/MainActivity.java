@@ -1,25 +1,21 @@
-package com.rose.guojiangzhibo;
+package com.rose.guojiangzhibo.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.rose.guojiangzhibo.fragment.FourFragment;
-import com.rose.guojiangzhibo.activity.RtmpPushActivity;
+import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.fragment.FourFragment;
 import com.rose.guojiangzhibo.fragment.OneFragment;
 import com.rose.guojiangzhibo.fragment.ThreeFragment;
 import com.rose.guojiangzhibo.fragment.TwoFragment;
 import com.umeng.analytics.MobclickAgent;
-
-import org.xutils.x;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
@@ -74,22 +70,22 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
                     fragmentTransaction.add(R.id.framelayout_main, oneFragment);
                 }
                 break;
-            case R.id.rb_main_two:
-                if (twoFragment != null) {
-                    fragmentTransaction.show(twoFragment);
-                } else {
-                    twoFragment = new TwoFragment(this);
-                    fragmentTransaction.add(R.id.framelayout_main, twoFragment);
-                }
-                break;
-            case R.id.rb_main_three:
-                if (threeFragment != null) {
-                    fragmentTransaction.show(threeFragment);
-                } else {
-                    threeFragment = new ThreeFragment();
-                    fragmentTransaction.add(R.id.framelayout_main, threeFragment);
-                }
-                break;
+//            case R.id.rb_main_two:
+//                if (twoFragment != null) {
+//                    fragmentTransaction.show(twoFragment);
+//                } else {
+//                    twoFragment = new TwoFragment(this);
+//                    fragmentTransaction.add(R.id.framelayout_main, twoFragment);
+//                }
+//                break;
+//            case R.id.rb_main_three:
+//                if (threeFragment != null) {
+//                    fragmentTransaction.show(threeFragment);
+//                } else {
+//                    threeFragment = new ThreeFragment();
+//                    fragmentTransaction.add(R.id.framelayout_main, threeFragment);
+//                }
+//                break;
             case R.id.rb_main_four:
                 if (fourFragment != null) {
                     fragmentTransaction.show(fourFragment);

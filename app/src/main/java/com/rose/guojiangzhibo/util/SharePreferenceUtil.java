@@ -1,14 +1,12 @@
-package com.anbang.palm.util;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import com.anbang.palm.App;
+package com.rose.guojiangzhibo.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class SharePreferenceUtil {
 	/**
@@ -66,7 +64,7 @@ public class SharePreferenceUtil {
 		Editor editor = sp.edit();
 		Iterator<?> iterator = valuesMap.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Map.Entry<String, Object> entry = (Entry<String, Object>) iterator.next();
+			Entry<String, Object> entry = (Entry<String, Object>) iterator.next();
 			String key = entry.getKey();
 			Object value = entry.getValue();
 			saveOrUpdateValue(editor, key, value);
@@ -85,7 +83,7 @@ public class SharePreferenceUtil {
 	 */
 	private static SharedPreferences getSP(Context context, String fileName, int mode) {
 		try {
-			SharedPreferences sp = App.getInstance().getBaseContext().getSharedPreferences(fileName, mode);
+			SharedPreferences sp = context.getSharedPreferences(fileName, mode);
 			return sp;
 		} catch (Exception e) {
 			//Logger.e("context" + context + "  fileName=" + fileName + " mode=" + mode);

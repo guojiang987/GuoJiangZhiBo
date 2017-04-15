@@ -95,7 +95,7 @@
             android:name="UMENG_CHANNEL"
             android:value="360_guojiangzhibo" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

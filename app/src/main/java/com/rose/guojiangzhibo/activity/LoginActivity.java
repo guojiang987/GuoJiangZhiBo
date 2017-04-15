@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.rose.guojiangzhibo.MainActivity;
 import com.rose.guojiangzhibo.MyApplication;
 import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.bean.User;

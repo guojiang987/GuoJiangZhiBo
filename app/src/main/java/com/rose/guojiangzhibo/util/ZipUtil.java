@@ -1,7 +1,4 @@
-package com.anbang.palm.util;
-
-import com.anbang.palm.App;
-import com.anbang.palm.constant.KeyConstant;
+package com.rose.guojiangzhibo.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

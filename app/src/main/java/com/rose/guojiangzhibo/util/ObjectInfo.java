@@ -1,4 +1,4 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

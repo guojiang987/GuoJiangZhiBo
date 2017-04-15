@@ -4,14 +4,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rose.guojiangzhibo.MainActivity">
+    tools:context="com.rose.guojiangzhibo.activity.MainActivity">
 
 
     <FrameLayout
-        android:layout_above="@+id/rg_main_menus"
         android:id="@+id/framelayout_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rg_main_menus" />
 
     <RadioGroup
         android:id="@+id/rg_main_menus"
@@ -28,17 +28,17 @@
             android:checked="true"
             android:drawableTop="@drawable/rb_one_selector" />
 
-        <RadioButton
-            android:id="@+id/rb_main_two"
-            style="@style/rb_buttonmenus"
-            android:drawableTop="@drawable/rb_two_selector" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_main_two"-->
+            <!--style="@style/rb_buttonmenus"-->
+            <!--android:drawableTop="@drawable/rb_two_selector" />-->
 
         <TextView style="@style/rb_buttonmenus" />
 
-        <RadioButton
-            android:id="@+id/rb_main_three"
-            style="@style/rb_buttonmenus"
-            android:drawableTop="@drawable/rb_three_selector" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_main_three"-->
+            <!--style="@style/rb_buttonmenus"-->
+            <!--android:drawableTop="@drawable/rb_three_selector" />-->
 
         <RadioButton
             android:id="@+id/rb_main_four"

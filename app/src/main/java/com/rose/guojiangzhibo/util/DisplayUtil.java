@@ -1,4 +1,4 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
 
 import android.content.Context;
 import android.graphics.Paint;

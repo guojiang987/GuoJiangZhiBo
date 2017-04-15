@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.rose.guojiangzhibo.MainActivity;
 import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.urlconfig.SplashURL;
 import com.squareup.picasso.Picasso;

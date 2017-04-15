@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.rose.guojiangzhibo.MainActivity;
 import com.rose.guojiangzhibo.R;
-import com.rose.guojiangzhibo.fragment.OneFragment;
 import com.rose.guojiangzhibo.fragment.onefragments.popular.PopularFragment;
 import com.rose.guojiangzhibo.fragment.onefragments.rich.RichFragment;
 import com.rose.guojiangzhibo.fragment.onefragments.star.StarFragment;

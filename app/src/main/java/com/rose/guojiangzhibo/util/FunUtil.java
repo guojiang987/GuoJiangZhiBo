@@ -1,4 +1,8 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -6,9 +10,6 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 
 public class FunUtil {
 	public static HashMap<String, Object> convertbean2Map(Object object) {

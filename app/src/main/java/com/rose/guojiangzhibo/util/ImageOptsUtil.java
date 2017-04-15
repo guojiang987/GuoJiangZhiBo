@@ -1,4 +1,4 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -49,10 +49,8 @@ public class ImageOptsUtil {
                 inputStream.close();
             } catch (FileNotFoundException exception) {
                 exception.printStackTrace();
-                LoggerUtils.logbackInfo(ImageOptsUtil.class,exception.toString());
             } catch (IOException exception) {
                 exception.printStackTrace();
-                LoggerUtils.logbackInfo(ImageOptsUtil.class, exception.toString());
             }
         }
 
@@ -107,21 +105,17 @@ public class ImageOptsUtil {
                     inputStream.close();
                 } catch (FileNotFoundException exception) {
                     exception.printStackTrace();
-                    LoggerUtils.logbackInfo(ImageOptsUtil.class, exception.toString());
                 } catch (IOException exception) {
                     exception.printStackTrace();
-                    LoggerUtils.logbackInfo(ImageOptsUtil.class, exception.toString());
                 }
             }
         } catch (OutOfMemoryError exception) {
             exception.printStackTrace();
-            LoggerUtils.logbackInfo(ImageOptsUtil.class, exception.toString());
         }
         try {
             scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888);
         } catch (OutOfMemoryError exception) {
             exception.printStackTrace();
-            LoggerUtils.logbackInfo(ImageOptsUtil.class, exception.toString());
         }
 
         float ratioX = actualWidth / (float) options.outWidth;
@@ -148,11 +142,10 @@ public class ImageOptsUtil {
                 matrix.postRotate(270);
             }
             scaledBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0,
-                                               scaledBitmap.getWidth(), scaledBitmap.getHeight(),
-                                               matrix, true);
+                    scaledBitmap.getWidth(), scaledBitmap.getHeight(),
+                    matrix, true);
         } catch (IOException e) {
             e.printStackTrace();
-            LoggerUtils.logbackInfo(ImageOptsUtil.class, e.toString());
         }
 
         return scaledBitmap;
@@ -175,7 +168,6 @@ public class ImageOptsUtil {
                     out.close();
                 }
             } catch (IOException ignored) {
-                LoggerUtils.logbackInfo(ImageOptsUtil.class, ignored.toString());
             }
         }
 

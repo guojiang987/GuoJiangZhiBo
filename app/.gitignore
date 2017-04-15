@@ -1,1 +1,15 @@
 /build
+bin/
+gen/
+build/
+/gradle
+/.gitignore
+/*.apk
+/.idea
+/build.gradle
+/.gradle
+/gradlew
+/gradlew.bat
+/local.properties
+/palmanbang.iml
+.gradle/

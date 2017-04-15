@@ -1,4 +1,4 @@
-package com.anbang.palm.util;
+package com.rose.guojiangzhibo.util;
 
 public class BtnUtil {
 	private static long lastClickTime;
