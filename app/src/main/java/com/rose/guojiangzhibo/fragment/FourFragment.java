@@ -44,6 +44,7 @@ import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
