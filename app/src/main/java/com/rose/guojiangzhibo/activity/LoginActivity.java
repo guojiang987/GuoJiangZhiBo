@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.rose.guojiangzhibo.MyApplication;
 import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.bean.User;
+import com.rose.guojiangzhibo.util.SharePreferenceUtil;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -86,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements PlatformActionLi
                             Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(this, MainActivity.class);
                             startActivity(intent);
+                            SharePreferenceUtil.saveOrUpdateAttribute(this,"UID","uidflag",true);
                             finish();
                             return;
                         } else {

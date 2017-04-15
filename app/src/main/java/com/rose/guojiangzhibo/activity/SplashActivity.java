@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.urlconfig.SplashURL;
+import com.rose.guojiangzhibo.util.SharePreferenceUtil;
 import com.squareup.picasso.Picasso;
 
 
@@ -38,12 +39,25 @@ public class SplashActivity extends AppCompatActivity implements Handler.Callbac
 
     }
 
+    Intent intent;
+
     @Override
     public boolean handleMessage(Message msg) {
         if (msg.what == 0) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+//            SharePreferenceUtil.saveOrUpdateAttribute(this,"UID","uidflag",true);
+
+            boolean b = (boolean) SharePreferenceUtil.getAttributeByKey(this, "UID", "uidflag", SharePreferenceUtil.VALUE_IS_BOOLEAN);
+            if (b) {
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            } else {
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
         }
         return false;
     }
