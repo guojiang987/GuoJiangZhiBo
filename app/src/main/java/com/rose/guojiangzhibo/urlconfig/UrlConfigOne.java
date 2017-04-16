@@ -14,4 +14,5 @@ public class UrlConfigOne {
     public static final String URL_LIST="http://app.guojiang.tv/user/rankList";
     public static final String URL_PERSONAL_INFO="http://app.guojiang.tv/groupPost/getUserPosts?page=0&uid=";
     public static final String URL_PLAY="http://app.guojiang.tv/room/getInfo?rid=";
+    public static final String FOCUSACTIVITY="http://app.guojiang.tv/index/focusActivity";
 }
