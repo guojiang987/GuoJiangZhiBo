@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_rtmp_push"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.rose.guojiangzhibo.activity.RtmpPushActivity">
+
     <com.tencent.rtmp.ui.TXCloudVideoView
         android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true" />
+
     <ImageView
         android:id="@+id/headerimg_push"
-    android:layout_width="60dp"
-    android:layout_height="60dp" />
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
     <TextView
-        android:textColor="#ffcccccc"
         android:id="@+id/nikename_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/headerimg_push"
         android:text="用户名"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textColor="#ffcccccc" />
+
     <TextView
-        android:textColor="#ffcccccc"
         android:id="@+id/time_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nikename_push"
         android:layout_toRightOf="@id/headerimg_push"
         android:text="00:00"
-        android:layout_below="@id/nikename_push"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:textColor="#ffcccccc" />
+
     <TextView
-         android:textColor="#ffcccccc"
-android:layout_marginLeft="20dp"
         android:id="@+id/witchcount_push"
-        android:layout_toRightOf="@id/time_push"
-        android:layout_below="@id/nikename_push"
-        android:text="203人观看"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nikename_push"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/time_push"
+        android:text="203人观看"
+        android:textColor="#ffcccccc" />
+
     <ImageButton
         android:id="@+id/back_push"
-        android:onClick="onclick"
-        android:background="#00000000"
-        android:src="@drawable/ssdk_back_arr"
-        android:layout_alignParentRight="true"
         android:layout_width="50dp"
-        android:layout_height="50dp" />
-    <Button
-        android:layout_alignParentBottom="true"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:background="#00000000"
         android:onClick="onclick"
+        android:src="@drawable/ssdk_back_arr" />
+
+    <Button
         android:id="@+id/changecamera"
         android:layout_width="wrap_content"
-        android:text="切换相机"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="onclick"
+        android:text="切换相机" />
 
 
 </RelativeLayout>

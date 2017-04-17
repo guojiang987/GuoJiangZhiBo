@@ -2,14 +2,14 @@ package com.rose.guojiangzhibo.activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,13 +19,9 @@ import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.umeng.analytics.MobclickAgent;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-
-import cn.sharesdk.sina.weibo.SinaWeibo;
-
 public class RtmpPushActivity extends AppCompatActivity {
+
+    private TXLivePushConfig mLivePushConfig;
     private boolean flag = true;
     private TXLivePusher txLivePusher;
     private TXLivePushConfig myLivePushConfig;
@@ -49,10 +45,10 @@ public class RtmpPushActivity extends AppCompatActivity {
         initView();
         if (Build.VERSION.SDK_INT >= 23) {
             int checkCallPhonePermission = ContextCompat.checkSelfPermission(
-                    getApplicationContext(), Manifest.permission.CALL_PHONE);
+                    getApplicationContext(), Manifest.permission.CAMERA);
             if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this
-                        , new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CODE);
+                        , new String[]{Manifest.permission.CAMERA}, REQUEST_CODE);
                 return;
             } else {
                 push();
@@ -70,7 +66,7 @@ public class RtmpPushActivity extends AppCompatActivity {
         txLivePusher = new TXLivePusher(this);
         myLivePushConfig = new TXLivePushConfig();
         txLivePusher.setConfig(myLivePushConfig);
-        String rtmpUrl = "rtmp://2000.livepush.myqcloud.com/live/2000_44c6e64e79af11e69776e435c87f075e?bizid=2000";
+        String rtmpUrl = "rtmp://8935.livepush.myqcloud.com/live/8935_e8f083d7d2?bizid=8935&txSecret=944749b0b21d91f028a5c0695d200cb4&txTime=58F4E67F";
         txLivePusher.startPusher(rtmpUrl);
         txCloudVideoView = (TXCloudVideoView) findViewById(R.id.video_view);
         txLivePusher.setBeautyFilter(3, 2);
@@ -89,7 +85,7 @@ public class RtmpPushActivity extends AppCompatActivity {
                         Thread.sleep(1000);
                         current = System.currentTimeMillis();
                         final long time = current - start;
-                         final String t = simpleDateFormat.format(time);
+                        final String t = simpleDateFormat.format(time);
                         Message message = Message.obtain();
                         message.obj = t;
                         handler.sendMessage(message);
@@ -126,6 +122,7 @@ public class RtmpPushActivity extends AppCompatActivity {
         super.onResume();
         MobclickAgent.onResume(this);
     }
+
     public void onPause() {
         super.onPause();
         MobclickAgent.onPause(this);
