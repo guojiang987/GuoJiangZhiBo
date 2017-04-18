@@ -4,10 +4,36 @@
     android:layout_height="match_parent"
     tools:context="com.rose.guojiangzhibo.fragment.onefragments.AttentionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView
+
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="attention" />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/pause_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:text="暂停/播放" />
+        <Button
+            android:id="@+id/speed_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="硬件加速 "
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/pause_attention"
+            android:layout_marginStart="27dp" />
+
+
+    </RelativeLayout>
+
 
 </FrameLayout>
