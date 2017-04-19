@@ -9,23 +9,26 @@ import java.util.List;
 public class OneFragmentData {
 
     /**
-     * rid : 1307
-     * playStartTime : 1476751707
+     * rid : 170668
+     * playStartTime : 1492610154
      * sex : 1
-     * mid : 154815
-     * nickname : 白轩
-     * headPic : http://static.guojiang.tv/app/upload/2016_10_18/e4ff42577f2d7524f29675c5c354d418.jpg
+     * mid : 1906905
+     * nickname : 赵伟顺其自然
+     * headPic : http://static.guojiang.tv/app/upload/2017_04_12/29c53abbcb1ece611691e9cc42bc223b.jpg
      * isPlaying : true
-     * onlineNum : 2021
-     * fansNum : 13068
-     * announcement : #土豪请秒榜#
-     * moderatorLevel : 12
+     * onlineNum : 2212
+     * fansNum : 2981
+     * announcement : 蒙面大侠不想露脸，露脸先表示
+     * moderatorLevel : 14
      * verified : false
      * verifyInfo :
-     * videoPlayUrl : rtmp://rtmppull.efeizao.com/live/room_1307/chat
-     * topics : [{"id":"39","title":"土豪请秒榜"}]
-     * weight : 1100000028
-     * id : 1307
+     * videoPlayUrl : rtmp://rtmppull.efeizao.com/live/room_170668/chat
+     * topics : []
+     * weight : 1100000018
+     * timeZoneHotWeight : 1000000000
+     * city : 南昌市
+     * tags : []
+     * id : 170668
      */
 
     private String rid;
@@ -43,13 +46,9 @@ public class OneFragmentData {
     private String verifyInfo;
     private String videoPlayUrl;
     private int weight;
+    private int timeZoneHotWeight;
+    private String city;
     private String id;
-    /**
-     * id : 39
-     * title : 土豪请秒榜
-     */
-
-    private List<TopicsBean> topics;
 
     public String getRid() {
         return rid;
@@ -171,49 +170,28 @@ public class OneFragmentData {
         this.weight = weight;
     }
 
+    public int getTimeZoneHotWeight() {
+        return timeZoneHotWeight;
+    }
+
+    public void setTimeZoneHotWeight(int timeZoneHotWeight) {
+        this.timeZoneHotWeight = timeZoneHotWeight;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public List<TopicsBean> getTopics() {
-        return topics;
-    }
-
-    public void setTopics(List<TopicsBean> topics) {
-        this.topics = topics;
-    }
-
-    public static class TopicsBean {
-        private String id;
-        private String title;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        @Override
-        public String toString() {
-            return "TopicsBean{" +
-                    "id='" + id + '\'' +
-                    ", title='" + title + '\'' +
-                    '}';
-        }
     }
 
     @Override
@@ -234,8 +212,9 @@ public class OneFragmentData {
                 ", verifyInfo='" + verifyInfo + '\'' +
                 ", videoPlayUrl='" + videoPlayUrl + '\'' +
                 ", weight=" + weight +
+                ", timeZoneHotWeight=" + timeZoneHotWeight +
+                ", city='" + city + '\'' +
                 ", id='" + id + '\'' +
-                ", topics=" + topics +
                 '}';
     }
 }

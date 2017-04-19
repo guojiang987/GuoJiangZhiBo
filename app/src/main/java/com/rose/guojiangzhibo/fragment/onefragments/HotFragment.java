@@ -19,7 +19,10 @@ import android.widget.Toast;
 import com.rock.teachlibrary.ImageLoader;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.bean.OneFragmentData;
 import com.rose.guojiangzhibo.dialog.CustomProgressDialog;
+import com.rose.guojiangzhibo.fragment.OneFragment;
+import com.rose.guojiangzhibo.helper.OkHttp3CookieHelper;
 import com.rose.guojiangzhibo.pulltorefresh.PullToRefreshListView;
 import com.rose.guojiangzhibo.urlconfig.UrlConfigOne;
 import com.rose.guojiangzhibo.util.Tools;
@@ -32,12 +35,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
 import okhttp3.FormBody;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -51,7 +60,7 @@ public class HotFragment extends Fragment {
     private List<String> imageViewsList;//头部图片的集合
     private PullToRefreshListView listview_hotfragment;
     private BannerView viewpager_hotfragment;
-    private OkHttpClient okHttpClient = new OkHttpClient();
+    private List<OneFragmentData> list;
 
     public HotFragment() {
         // Required empty public constructor
@@ -59,6 +68,7 @@ public class HotFragment extends Fragment {
 
     private void initView() {
         imageViewsList = new ArrayList<>();
+        list = new ArrayList<>();
         listview_hotfragment = (PullToRefreshListView) inflate.findViewById(R.id.listview_hotfragment);
         viewpager_hotfragment = (BannerView) inflate.findViewById(R.id.viewpager_hotfragment);
         ImageLoader.init(getActivity());
@@ -68,6 +78,7 @@ public class HotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         inflate = inflater.inflate(R.layout.fragment_hot, container, false);
         return inflate;
     }
@@ -77,6 +88,82 @@ public class HotFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initView();
         getHeader();
+        getData();
+    }
+
+    private void getData() {
+        CustomProgressDialog.showProgressDialog(getContext(), null);
+        OkHttp3CookieHelper cookieHelper = new OkHttp3CookieHelper();
+        cookieHelper.setCookie(UrlConfigOne.HOTDATA, "uid", "6579212");
+        cookieHelper.setCookie(UrlConfigOne.HOTDATA, "PHPSESSID", "3gsl5u4cm6tlsk7m4jq2fufmd7");
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().
+                cookieJar(cookieHelper.cookieJar()).build();
+//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//        builder.cookieJar(new CookieJar() {
+//            private final HashMap<String, List<Cookie>> cookieStore = new HashMap<String, List<Cookie>>();
+//
+//            @Override
+//            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+//                cookieStore.put(url.host(), cookies);
+//
+//                for(Cookie cookie:cookies){
+//                    Log.i("------name",cookie.name());
+//                    Log.i("------path",cookie.path());
+////                    System.out.println("cookie Name:"+cookie.name());
+////                    System.out.println("cookie Path:"+cookie.path());
+//                }
+//            }
+//
+//            @Override
+//            public List<Cookie> loadForRequest(HttpUrl url) {
+//                List<Cookie> cookies = cookieStore.get(url.host());
+//                return cookies != null ? cookies : new ArrayList<Cookie>();
+//            }
+//        });
+//        okHttpClient = builder.build();
+        FormBody formBody = new FormBody.Builder().
+                add("platform", Tools.getPlatform()).
+                add("deviceName", Tools.getDeviceName()).
+                add("version", Tools.getVersion()).
+                add("packageId", "0").
+                add("androidVersion", Tools.getAndroidVersion()).
+                add("channel", Tools.getChannel()).
+                add("page", "0").
+                add("status", "1").
+                build();
+        Request request = new Request.Builder().url(UrlConfigOne.HOTDATA).post(formBody).build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                try {
+                    JSONObject jsonObject = new JSONObject(json);
+                    if (jsonObject.optInt("errno") == 0) {
+                        JSONArray jsonArray = jsonObject.optJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            OneFragmentData oneFragmentData = new OneFragmentData();
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            oneFragmentData.setRid(object.getString("rid"));
+                            oneFragmentData.setId(object.getString("id"));
+                            oneFragmentData.setHeadPic(object.optString("headPic"));
+                            oneFragmentData.setIsPlaying(object.optBoolean("isPlaying"));
+                            oneFragmentData.setOnlineNum(object.getInt("onlineNum"));
+                            oneFragmentData.setAnnouncement(object.getString("announcement"));
+                            oneFragmentData.setCity(object.getString("city"));
+                            oneFragmentData.setVideoPlayUrl(object.getString("videoPlayUrl"));
+                            list.add(oneFragmentData);
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private Handler handler = new Handler() {
@@ -89,6 +176,7 @@ public class HotFragment extends Fragment {
     };
 
     public void getHeader() {
+        OkHttpClient okHttpClient = new OkHttpClient();
         CustomProgressDialog.showProgressDialog(getContext(), null);
         FormBody formBody = new FormBody.Builder().
                 add("platform", Tools.getPlatform()).
@@ -150,11 +238,13 @@ public class HotFragment extends Fragment {
         super.onResume();
         viewpager_hotfragment.startAutoScroll();
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         viewpager_hotfragment.stopAutoScroll();
     }
+
     public void onTouchViewPager(View view, final int position) {
         view.setOnTouchListener(new View.OnTouchListener() {
             private long downTime;
@@ -168,12 +258,9 @@ public class HotFragment extends Fragment {
                         downTime = System.currentTimeMillis();
                         break;
                     case MotionEvent.ACTION_UP:
-//                        if ((System.currentTimeMillis() - downTime < 500) && (Math.abs(downX - (int) event.getX()) < 30)) {
-//                            Intent intent = new Intent(getContext(), ProjectRecruitmentActivity.class);
-//                            tasknew_viewBanner.stopAutoScroll();
-//                            intent.putExtra("projectid", projectid);
-//                            startActivity(intent);
-//                        }
+                        if ((System.currentTimeMillis() - downTime < 500) && (Math.abs(downX - (int) event.getX()) < 30)) {
+                            //TODO 添加参数
+                        }
                         break;
                     case MotionEvent.ACTION_CANCEL:
                         break;
