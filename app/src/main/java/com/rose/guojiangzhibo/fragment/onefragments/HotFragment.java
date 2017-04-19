@@ -1,11 +1,16 @@
 package com.rose.guojiangzhibo.fragment.onefragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,14 +19,20 @@ import android.widget.Toast;
 import com.rock.teachlibrary.ImageLoader;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.dialog.CustomProgressDialog;
 import com.rose.guojiangzhibo.pulltorefresh.PullToRefreshListView;
 import com.rose.guojiangzhibo.urlconfig.UrlConfigOne;
 import com.rose.guojiangzhibo.util.Tools;
+import com.rose.guojiangzhibo.viewpager.BannerView;
+import com.rose.guojiangzhibo.viewpager.ImagePageAdapter;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -36,18 +47,20 @@ import okhttp3.Response;
  */
 public class HotFragment extends Fragment {
 
+    private View inflate;
     private List<String> imageViewsList;//头部图片的集合
     private PullToRefreshListView listview_hotfragment;
-    private ViewPager viewpager_hotfragment;
+    private BannerView viewpager_hotfragment;
     private OkHttpClient okHttpClient = new OkHttpClient();
 
     public HotFragment() {
         // Required empty public constructor
     }
 
-    private void initView(View inflate) {
+    private void initView() {
+        imageViewsList = new ArrayList<>();
         listview_hotfragment = (PullToRefreshListView) inflate.findViewById(R.id.listview_hotfragment);
-        viewpager_hotfragment = (ViewPager) inflate.findViewById(R.id.viewpager_hotfragment);
+        viewpager_hotfragment = (BannerView) inflate.findViewById(R.id.viewpager_hotfragment);
         ImageLoader.init(getActivity());
     }
 
@@ -55,14 +68,28 @@ public class HotFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View inflate = inflater.inflate(R.layout.fragment_hot, container, false);
-        initView(inflate);
-        getHeader(inflate);
+        inflate = inflater.inflate(R.layout.fragment_hot, container, false);
         return inflate;
     }
 
-    public void getHeader(View inflate) {
-        ViewPager viewPager = (ViewPager) inflate.findViewById(R.id.viewpager_hotfragment);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+        getHeader();
+    }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 1) {
+                viewpager();
+            }
+        }
+    };
+
+    public void getHeader() {
+        CustomProgressDialog.showProgressDialog(getContext(), null);
         FormBody formBody = new FormBody.Builder().
                 add("platform", Tools.getPlatform()).
                 add("deviceName", Tools.getDeviceName()).
@@ -84,13 +111,18 @@ public class HotFragment extends Fragment {
                 try {
                     JSONObject jsonObject = new JSONObject(json);
                     if (jsonObject.getInt("errno") == 0) {
-                        imageViewsList.add(jsonObject.getString("pic"));
-                        for (int i = 0; i < imageViewsList.size(); i++) {
-
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            imageViewsList.add(object.getString("pic"));
                         }
+                        Message message = handler.obtainMessage();
+                        message.what = 1;
+                        handler.sendMessage(message);
                     } else {
                         Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                     }
+                    CustomProgressDialog.Dissmiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -98,7 +130,59 @@ public class HotFragment extends Fragment {
         });
 
     }
-//    private void addHeader() {
+
+    private ImagePageAdapter imagePageAdapter;
+
+    public void viewpager() {
+        imagePageAdapter = new ImagePageAdapter(getContext(), imageViewsList.size());
+        imagePageAdapter.addImagePageAdapterListener(new ImagePageAdapter.ImagePageAdapterListener() {
+            @Override
+            public void dispalyImage(ImageView banner, int position) {
+                Picasso.with(getContext()).load(imageViewsList.get(position)).into(banner);
+                onTouchViewPager(banner, position);
+            }
+        });
+        viewpager_hotfragment.setBannerAdapter(imagePageAdapter);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewpager_hotfragment.startAutoScroll();
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewpager_hotfragment.stopAutoScroll();
+    }
+    public void onTouchViewPager(View view, final int position) {
+        view.setOnTouchListener(new View.OnTouchListener() {
+            private long downTime;
+            private int downX;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downX = (int) event.getX();
+                        downTime = System.currentTimeMillis();
+                        break;
+                    case MotionEvent.ACTION_UP:
+//                        if ((System.currentTimeMillis() - downTime < 500) && (Math.abs(downX - (int) event.getX()) < 30)) {
+//                            Intent intent = new Intent(getContext(), ProjectRecruitmentActivity.class);
+//                            tasknew_viewBanner.stopAutoScroll();
+//                            intent.putExtra("projectid", projectid);
+//                            startActivity(intent);
+//                        }
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+    //    private void addHeader() {
 //        View header = LayoutInflater.from(getActivity()).inflate(R.layout.item_hot_header,null);
 //        ViewPager viewPager = (ViewPager) header.findViewById(R.id.viewpager_hotfragment);
 //        for (int i = 0; i < hotHeaderDataList.size()*2; i++) {
