@@ -190,7 +190,8 @@ public class HotFragment extends Fragment {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Toast.makeText(getContext(), "数据请求失败", Toast.LENGTH_SHORT).show();
+                CustomProgressDialog.Dissmiss();
             }
 
             @Override
@@ -212,7 +213,7 @@ public class HotFragment extends Fragment {
                     }
                     CustomProgressDialog.Dissmiss();
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getContext(), "数据加载失败", Toast.LENGTH_SHORT).show();
                 }
             }
         });
