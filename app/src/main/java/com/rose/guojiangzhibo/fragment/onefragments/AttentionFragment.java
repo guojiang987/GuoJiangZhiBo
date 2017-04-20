@@ -26,7 +26,7 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
     private TXLivePlayer mLivePlayer;
     private boolean pauseflag = true;
     private TXCloudVideoView mPlayerView;
-    private String flvUrl = "";
+    private String flvUrl = "http://8935.liveplay.myqcloud.com/live/8935_fc0daa33f6.flv";
     private TXLivePlayConfig mPlayConfig;
 
     public AttentionFragment() {
@@ -38,7 +38,7 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View inflate = inflater.inflate(R.layout.fragment_attention, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_attention,container, false);
         initView(inflate);
         return inflate;
     }

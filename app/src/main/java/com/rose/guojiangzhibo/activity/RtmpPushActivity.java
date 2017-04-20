@@ -21,7 +21,6 @@ import com.umeng.analytics.MobclickAgent;
 
 public class RtmpPushActivity extends AppCompatActivity {
 
-    private TXLivePushConfig mLivePushConfig;
     private boolean flag = true;
     private TXLivePusher txLivePusher;
     private TXLivePushConfig myLivePushConfig;
@@ -66,7 +65,7 @@ public class RtmpPushActivity extends AppCompatActivity {
         txLivePusher = new TXLivePusher(this);
         myLivePushConfig = new TXLivePushConfig();
         txLivePusher.setConfig(myLivePushConfig);
-        String rtmpUrl = "rtmp://8935.livepush.myqcloud.com/live/8935_e8f083d7d2?bizid=8935&txSecret=944749b0b21d91f028a5c0695d200cb4&txTime=58F4E67F";
+        String rtmpUrl = "rtmp://8935.livepush.myqcloud.com/live/8935_fc0daa33f6?bizid=8935&txSecret=7726e067f02a430e5bacb7ef161ea333&txTime=58F7897F";
         txLivePusher.startPusher(rtmpUrl);
         txCloudVideoView = (TXCloudVideoView) findViewById(R.id.video_view);
         txLivePusher.setBeautyFilter(3, 2);
