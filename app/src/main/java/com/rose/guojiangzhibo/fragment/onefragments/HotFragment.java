@@ -14,15 +14,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.rock.teachlibrary.ImageLoader;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.adapter.MyOneListAdapter;
 import com.rose.guojiangzhibo.bean.OneFragmentData;
 import com.rose.guojiangzhibo.dialog.CustomProgressDialog;
 import com.rose.guojiangzhibo.fragment.OneFragment;
 import com.rose.guojiangzhibo.helper.OkHttp3CookieHelper;
+import com.rose.guojiangzhibo.layout.MyPullToRefreshListView;
+import com.rose.guojiangzhibo.pulltorefresh.PullToRefreshBase;
 import com.rose.guojiangzhibo.pulltorefresh.PullToRefreshListView;
 import com.rose.guojiangzhibo.urlconfig.UrlConfigOne;
 import com.rose.guojiangzhibo.util.Tools;
@@ -58,9 +62,12 @@ public class HotFragment extends Fragment {
 
     private View inflate;
     private List<String> imageViewsList;//头部图片的集合
-    private PullToRefreshListView listview_hotfragment;
+    private MyPullToRefreshListView listview_hotfragment;
     private BannerView viewpager_hotfragment;
     private List<OneFragmentData> list;
+    private MyOneListAdapter myOneListAdapter;
+    private int page = 0;
+    private ListView listView;
 
     public HotFragment() {
         // Required empty public constructor
@@ -69,9 +76,10 @@ public class HotFragment extends Fragment {
     private void initView() {
         imageViewsList = new ArrayList<>();
         list = new ArrayList<>();
-        listview_hotfragment = (PullToRefreshListView) inflate.findViewById(R.id.listview_hotfragment);
+        listview_hotfragment = (MyPullToRefreshListView) inflate.findViewById(R.id.listview_hotfragment);
         viewpager_hotfragment = (BannerView) inflate.findViewById(R.id.viewpager_hotfragment);
-        ImageLoader.init(getActivity());
+        listView = listview_hotfragment.getRefreshableView();
+        myOneListAdapter = new MyOneListAdapter(getContext(), list);
     }
 
     @Override
@@ -89,6 +97,14 @@ public class HotFragment extends Fragment {
         initView();
         getHeader();
         getData();
+        myOneListAdapter = new MyOneListAdapter(getContext(), list);
+        listview_hotfragment.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshData();
+            }
+        });
+        listView.setAdapter(myOneListAdapter);
     }
 
     private void getData() {
@@ -98,29 +114,6 @@ public class HotFragment extends Fragment {
         cookieHelper.setCookie(UrlConfigOne.HOTDATA, "PHPSESSID", "3gsl5u4cm6tlsk7m4jq2fufmd7");
         OkHttpClient okHttpClient = new OkHttpClient.Builder().
                 cookieJar(cookieHelper.cookieJar()).build();
-//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-//        builder.cookieJar(new CookieJar() {
-//            private final HashMap<String, List<Cookie>> cookieStore = new HashMap<String, List<Cookie>>();
-//
-//            @Override
-//            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-//                cookieStore.put(url.host(), cookies);
-//
-//                for(Cookie cookie:cookies){
-//                    Log.i("------name",cookie.name());
-//                    Log.i("------path",cookie.path());
-////                    System.out.println("cookie Name:"+cookie.name());
-////                    System.out.println("cookie Path:"+cookie.path());
-//                }
-//            }
-//
-//            @Override
-//            public List<Cookie> loadForRequest(HttpUrl url) {
-//                List<Cookie> cookies = cookieStore.get(url.host());
-//                return cookies != null ? cookies : new ArrayList<Cookie>();
-//            }
-//        });
-//        okHttpClient = builder.build();
         FormBody formBody = new FormBody.Builder().
                 add("platform", Tools.getPlatform()).
                 add("deviceName", Tools.getDeviceName()).
@@ -128,19 +121,20 @@ public class HotFragment extends Fragment {
                 add("packageId", "0").
                 add("androidVersion", Tools.getAndroidVersion()).
                 add("channel", Tools.getChannel()).
-                add("page", "0").
+                add("page", page + "").
                 add("status", "1").
                 build();
         Request request = new Request.Builder().url(UrlConfigOne.HOTDATA).post(formBody).build();
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                CustomProgressDialog.Dissmiss();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
+                Tools.d(json);
                 try {
                     JSONObject jsonObject = new JSONObject(json);
                     if (jsonObject.optInt("errno") == 0) {
@@ -156,9 +150,16 @@ public class HotFragment extends Fragment {
                             oneFragmentData.setAnnouncement(object.getString("announcement"));
                             oneFragmentData.setCity(object.getString("city"));
                             oneFragmentData.setVideoPlayUrl(object.getString("videoPlayUrl"));
+                            oneFragmentData.setNickname(object.getString("nickname"));
                             list.add(oneFragmentData);
                         }
+                        Message message = handler.obtainMessage();
+                        message.what = 2;
+                        handler.sendMessage(message);
+                    } else {
+                        Toast.makeText(getContext(), jsonObject.getString("msg"), Toast.LENGTH_SHORT).show();
                     }
+                    CustomProgressDialog.Dissmiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -166,11 +167,23 @@ public class HotFragment extends Fragment {
         });
     }
 
+    public void refreshData() {
+        page++;
+        getData();
+    }
+
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 viewpager();
+            } else if (msg.what == 2) {
+                if (myOneListAdapter != null) {
+                    myOneListAdapter.notifyDataSetChanged();
+                } else {
+                    myOneListAdapter = new MyOneListAdapter(getContext(), list);
+                    myOneListAdapter.notifyDataSetChanged();
+                }
             }
         }
     };
@@ -190,13 +203,13 @@ public class HotFragment extends Fragment {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Toast.makeText(getContext(), "数据请求失败", Toast.LENGTH_SHORT).show();
                 CustomProgressDialog.Dissmiss();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
+                Tools.d(json);
                 try {
                     JSONObject jsonObject = new JSONObject(json);
                     if (jsonObject.getInt("errno") == 0) {
@@ -238,6 +251,7 @@ public class HotFragment extends Fragment {
     public void onResume() {
         super.onResume();
         viewpager_hotfragment.startAutoScroll();
+
     }
 
     @Override
@@ -270,118 +284,6 @@ public class HotFragment extends Fragment {
             }
         });
     }
-    //    private void addHeader() {
-//        View header = LayoutInflater.from(getActivity()).inflate(R.layout.item_hot_header,null);
-//        ViewPager viewPager = (ViewPager) header.findViewById(R.id.viewpager_hotfragment);
-//        for (int i = 0; i < hotHeaderDataList.size()*2; i++) {
-//            ImageView imageHeader=new ImageView(getActivity());
-//            imageHeader.setScaleType(ImageView.ScaleType.FIT_XY);
-//            //下载图片
-//            ImageLoader.display(imageHeader,hotHeaderDataList.get(i%hotHeaderDataList.size()).getPic());
-//            imageViewsList.add(imageHeader);
-//        }
-//        myOneHeaderAdapter=new MyOneHeaderAdapter(imageViewsList);
-//        viewPager.setAdapter(myOneHeaderAdapter);
-//        viewPager.setCurrentItem(Integer.MAX_VALUE/2);
-//        listView.addHeaderView(header);
-//    }
-
-//    private void getData() {
-//        //解析头部轮播图片的数据
-//        HttpUtil.getStringAsync(UrlConfigOne.URL_HEADER, new HttpUtil.RequestCallBack() {
-//            @Override
-//            public void onFailure() {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(String result) {
-//                try {
-//                    JSONObject jsonObject =new JSONObject(result);
-//                    JSONObject focusImages=jsonObject.optJSONObject("focusImages");
-//                    JSONArray jsonArray = focusImages.optJSONArray("list");
-//                    hotHeaderDataList=new ArrayList<HotHeaderData>();
-//                    for (int i = 0; i < jsonArray.length(); i++) {
-//                        JSONObject object=jsonArray.optJSONObject(i);
-//                        String pic=object.optString("pic");
-//                        HotHeaderData hotHeaderData=new HotHeaderData();
-//                        hotHeaderData.setPic(pic);
-//                        hotHeaderDataList.add(hotHeaderData);
-//                    }
-//                    addHeader();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        });
-//        //解析主要布局的数据(第一段数据)
-//        HttpUtil.getStringAsync(UrlConfigOne.URL_CONTENT_HOTONE, new HttpUtil.RequestCallBack() {
-//            @Override
-//            public void onFailure() {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(String result) {
-//                oneFragmentDatasList.addAll(OneFragmentDataJson.getListFromOneFragment(result));
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        });
-//        //第二段数据
-//        HttpUtil.getStringAsync(UrlConfigOne.URL_CONTENT_HOTTWO, new HttpUtil.RequestCallBack() {
-//            @Override
-//            public void onFailure() {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(String result) {
-//                oneFragmentDatasList.addAll(OneFragmentDataJson.getListFromOneFragment(result));
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        });
-//        //第三段数据
-//        HttpUtil.getStringAsync(UrlConfigOne.URL_CONTENT_HOTTHREE, new HttpUtil.RequestCallBack() {
-//            @Override
-//            public void onFailure() {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(String result) {
-//                oneFragmentDatasList.addAll(OneFragmentDataJson.getListFromOneFragment(result));
-//                myOneListAdapter.notifyDataSetChanged();
-//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-////                        Intent intent=new Intent(getActivity(), OnePlayerActivity.class);
-////                        intent.putExtra("url",oneFragmentDatasList.get(position).getVideoPlayUrl());
-////                        startActivityForResult(intent,123);
-//                        playVideo(oneFragmentDatasList.get(position).getVideoPlayUrl(),position);
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//
-//            }
-//        });
-//    }
 
 //    private void playVideo(String source,int position){
 ////		String source = mSourceET.getText().toString();

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.rock.teachlibrary.ImageLoader;
 import com.rose.guojiangzhibo.R;
 import com.rose.guojiangzhibo.bean.OneFragmentData;
+import com.squareup.picasso.Picasso;
 
 import org.xutils.common.Callback;
 import org.xutils.image.ImageOptions;
@@ -35,8 +36,7 @@ public class MyOneListAdapter extends BaseAdapter {
     public MyOneListAdapter(Context context, List<OneFragmentData> oneFragmentDataList) {
         this.context = context;
         this.oneFragmentDataList = oneFragmentDataList;
-        ImageLoader.init(context);
-        imageOptions =  new ImageOptions.Builder()
+        imageOptions = new ImageOptions.Builder()
                 .setConfig(Bitmap.Config.RGB_565)
                 .setCrop(false)
                 .setImageScaleType(ImageView.ScaleType.FIT_CENTER)//设置图片展示模式
@@ -67,7 +67,7 @@ public class MyOneListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_hotfragment, parent, false);
             myViewHolder.textOne = (TextView) convertView.findViewById(R.id.text_one);
             myViewHolder.textTwo = (TextView) convertView.findViewById(R.id.text_two);
-            myViewHolder.textHot= (TextView) convertView.findViewById(R.id.text_hot);
+            myViewHolder.textHot = (TextView) convertView.findViewById(R.id.text_hot);
             myViewHolder.imageHeader = (ImageView) convertView.findViewById(R.id.image_hot_head);
             myViewHolder.imageHot = (ImageView) convertView.findViewById(R.id.image_hot);
             convertView.setTag(myViewHolder);
@@ -76,18 +76,19 @@ public class MyOneListAdapter extends BaseAdapter {
         }
 
         //设置数据
-        myViewHolder.textOne.setText(oneFragmentDataList.get(position).getNickname());
-        myViewHolder.textTwo.setText(oneFragmentDataList.get(position).getAnnouncement());
+        OneFragmentData oneFragmentData = oneFragmentDataList.get(position);
+        myViewHolder.textOne.setText(oneFragmentData.getNickname());
+        myViewHolder.textTwo.setText(oneFragmentData.getAnnouncement());
         //videoview的图片
-        ImageLoader.display(myViewHolder.imageHot, oneFragmentDataList.get(position).getHeadPic());
+        Picasso.with(context).load(oneFragmentData.getHeadPic()).config(Bitmap.Config.RGB_565).into(myViewHolder.imageHot);
         //圆形头像
-        x.image().bind(myViewHolder.imageHeader, oneFragmentDataList.get(position).getHeadPic(), new Callback.CommonCallback<Drawable>() {
+        x.image().bind(myViewHolder.imageHeader, oneFragmentData.getHeadPic(), new Callback.CommonCallback<Drawable>() {
             @Override
             public void onSuccess(Drawable result) {
-                if(result!=null){
-                    BitmapDrawable bitmapDrawable= (BitmapDrawable) result;
+                if (result != null) {
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) result;
                     Bitmap bitmap = bitmapDrawable.getBitmap();
-                    Bitmap circleBitmap=toRoundBitmap(bitmap);
+                    Bitmap circleBitmap = toRoundBitmap(bitmap);
                     myViewHolder.imageHeader.setImageBitmap(circleBitmap);
                 }
             }
@@ -111,7 +112,7 @@ public class MyOneListAdapter extends BaseAdapter {
     }
 
     class MyViewHolder {
-        TextView textOne, textTwo,textHot;
+        TextView textOne, textTwo, textHot;
         ImageView imageHeader, imageHot;
 
     }

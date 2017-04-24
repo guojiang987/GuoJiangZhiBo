@@ -1,6 +1,7 @@
 package com.rose.guojiangzhibo.util;
 
 import android.os.Build;
+import android.util.Log;
 
 /**
  * Created by xdy on 2017/4/15.
@@ -30,5 +31,17 @@ public class Tools {
 
     public static String getAndroidVersion() {
         return android.os.Build.VERSION.SDK_INT + "";
+    }
+
+    public static void d(String msg) {
+        d("xdy", msg);
+    }
+
+    public static void d(String tag, String msg) {//TODO 此为调试代码
+        try {
+            Log.d(tag, msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

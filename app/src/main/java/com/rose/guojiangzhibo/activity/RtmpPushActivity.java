@@ -2,7 +2,6 @@ package com.rose.guojiangzhibo.activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +17,8 @@ import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.umeng.analytics.MobclickAgent;
+
+import java.text.SimpleDateFormat;
 
 public class RtmpPushActivity extends AppCompatActivity {
 
