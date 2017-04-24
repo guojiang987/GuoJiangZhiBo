@@ -6,6 +6,6 @@ package com.rose.guojiangzhibo.urlconfig;
 
 public class SplashURL {
     public static String getPic() {
-        return "http://static.guojiang.tv/pc/upload/2016_10_10/59a7033fd3f843897524ac8a0ad7fb50.jpg";
+        return "http://static.guojiang.tv/pc/upload/2017_04_18/1028eb48a8cabebbec4af3f252c888d2.jpg";
     }
 }
