@@ -2,6 +2,7 @@ package com.rose.guojiangzhibo.fragment.onefragments;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.rock.teachlibrary.ImageLoader;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.activity.VideoViewPlayingActivity;
 import com.rose.guojiangzhibo.adapter.MyOneListAdapter;
 import com.rose.guojiangzhibo.bean.OneFragmentData;
 import com.rose.guojiangzhibo.dialog.CustomProgressDialog;
@@ -79,7 +82,6 @@ public class HotFragment extends Fragment {
         listview_hotfragment = (MyPullToRefreshListView) inflate.findViewById(R.id.listview_hotfragment);
         viewpager_hotfragment = (BannerView) inflate.findViewById(R.id.viewpager_hotfragment);
         listView = listview_hotfragment.getRefreshableView();
-        myOneListAdapter = new MyOneListAdapter(getContext(), list);
     }
 
     @Override
@@ -97,14 +99,21 @@ public class HotFragment extends Fragment {
         initView();
         getHeader();
         getData();
-        myOneListAdapter = new MyOneListAdapter(getContext(), list);
         listview_hotfragment.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshData();
             }
         });
+        myOneListAdapter = new MyOneListAdapter(getContext(), list);
         listView.setAdapter(myOneListAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                OneFragmentData oneFragmentData = list.get(i);
+                playVideo(oneFragmentData);
+            }
+        });
     }
 
     private void getData() {
@@ -285,29 +294,29 @@ public class HotFragment extends Fragment {
         });
     }
 
-//    private void playVideo(String source,int position){
-////		String source = mSourceET.getText().toString();
-////        String source="rtmp://rtmppull.efeizao.com/live/room_132896/chat";
-//        if(source == null || source.equals("")){
-//            /**
-//             * 简单检测播放源的合法性,不合法不播放
-//             */
-//            Toast.makeText(getActivity(), "please input your video source", 500).show();
-//
-////            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
-//            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
-//            intent.setData(Uri.parse(source));
-//            intent.putExtra("rid",oneFragmentDatasList.get(position).getRid());
-////            intent.putExtra("headerPic",oneFragmentDatasList.get(position).getHeadPic());
-//            startActivityForResult(intent,123);
-//        }else{
-//            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
-//            intent.putExtra("rid",oneFragmentDatasList.get(position).getRid());
+    private void playVideo(OneFragmentData oneFragmentData) {
+        String source = oneFragmentData.getVideoPlayUrl();
+        if (source == null || source.equals("")) {
+            /**
+             * 简单检测播放源的合法性,不合法不播放
+             */
+            Toast.makeText(getActivity(), "please input your video source", 500).show();
+
+//            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
+            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
+            intent.setData(Uri.parse(source));
+            intent.putExtra("rid", oneFragmentData.getRid());
 //            intent.putExtra("headerPic",oneFragmentDatasList.get(position).getHeadPic());
-//            intent.putExtra("nickname",oneFragmentDatasList.get(position).getNickname());
-//            startActivityForResult(intent,123);
-//        }
-//    }
+            startActivityForResult(intent, 123);
+        } else {
+            Tools.d("数据----" + oneFragmentData.getRid() + "--" + oneFragmentData.getHeadPic() + "" + oneFragmentData.getNickname());
+            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
+            intent.putExtra("rid", oneFragmentData.getRid());
+            intent.putExtra("headerPic", oneFragmentData.getHeadPic());
+            intent.putExtra("nickname", oneFragmentData.getNickname());
+            startActivityForResult(intent, 123);
+        }
+    }
 
 
 }

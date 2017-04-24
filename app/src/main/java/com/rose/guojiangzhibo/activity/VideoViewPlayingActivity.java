@@ -229,7 +229,14 @@ public class VideoViewPlayingActivity extends Activity {
         setContentView(R.layout.item_play);
         ButterKnife.bind(this);
 
-
+        rid = getIntent().getStringExtra("rid");
+        headerPic = getIntent().getStringExtra("headerPic");
+        nickname = getIntent().getStringExtra("nickname");
+        //接收fragment传递的值
+        downBitmap(headerPic);
+        textName.setText(nickname);
+        textPersonnumber.setText("观众1650人");
+        textPaopaonumber.setText("泡泡数 226790 ");
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE, POWER_LOCK);
 
@@ -253,14 +260,6 @@ public class VideoViewPlayingActivity extends Activity {
         mHandlerThread.start();
         mEventHandler = new EventHandler(mHandlerThread.getLooper());
 
-        //接收fragment传递的值
-        rid = getIntent().getExtras().getString("rid");
-        headerPic = getIntent().getExtras().getString("headerPic");
-        nickname = getIntent().getExtras().getString("nickname");
-        downBitmap(headerPic);
-        textName.setText(nickname);
-        textPersonnumber.setText("观众1650人");
-        textPaopaonumber.setText("泡泡数 226790 ");
     }
 
     /**

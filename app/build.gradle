@@ -47,8 +47,8 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.2'
-    compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     testCompile 'junit:junit:4.12'
     compile files('src/main/jniLibs/txrtmpsdk.jar')
+    compile 'com.jakewharton:butterknife:8.5.1'
 }
