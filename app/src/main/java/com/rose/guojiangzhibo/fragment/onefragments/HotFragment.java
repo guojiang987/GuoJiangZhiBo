@@ -155,11 +155,12 @@ public class HotFragment extends Fragment {
                             oneFragmentData.setId(object.getString("id"));
                             oneFragmentData.setHeadPic(object.optString("headPic"));
                             oneFragmentData.setIsPlaying(object.optBoolean("isPlaying"));
-                            oneFragmentData.setOnlineNum(object.getInt("onlineNum"));
+                            oneFragmentData.setOnlineNum(object.getString("onlineNum"));
                             oneFragmentData.setAnnouncement(object.getString("announcement"));
                             oneFragmentData.setCity(object.getString("city"));
                             oneFragmentData.setVideoPlayUrl(object.getString("videoPlayUrl"));
                             oneFragmentData.setNickname(object.getString("nickname"));
+                            oneFragmentData.setMid(object.getString("mid"));
                             list.add(oneFragmentData);
                         }
                         Message message = handler.obtainMessage();
@@ -300,7 +301,7 @@ public class HotFragment extends Fragment {
             /**
              * 简单检测播放源的合法性,不合法不播放
              */
-            Toast.makeText(getActivity(), "please input your video source", 500).show();
+            Toast.makeText(getActivity(), "please input your video source",500).show();
 
 //            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
             Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
@@ -309,11 +310,12 @@ public class HotFragment extends Fragment {
 //            intent.putExtra("headerPic",oneFragmentDatasList.get(position).getHeadPic());
             startActivityForResult(intent, 123);
         } else {
-            Tools.d("数据----" + oneFragmentData.getRid() + "--" + oneFragmentData.getHeadPic() + "" + oneFragmentData.getNickname());
             Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
             intent.putExtra("rid", oneFragmentData.getRid());
             intent.putExtra("headerPic", oneFragmentData.getHeadPic());
             intent.putExtra("nickname", oneFragmentData.getNickname());
+            intent.putExtra("onlineNum", oneFragmentData.getOnlineNum());
+            intent.putExtra("mid", oneFragmentData.getMid());
             startActivityForResult(intent, 123);
         }
     }

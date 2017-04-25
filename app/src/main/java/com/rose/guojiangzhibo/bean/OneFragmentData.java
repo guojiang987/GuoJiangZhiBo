@@ -38,7 +38,7 @@ public class OneFragmentData {
     private String nickname;
     private String headPic;
     private boolean isPlaying;
-    private int onlineNum;
+    private String onlineNum;
     private String fansNum;
     private String announcement;
     private String moderatorLevel;
@@ -106,12 +106,20 @@ public class OneFragmentData {
         this.isPlaying = isPlaying;
     }
 
-    public int getOnlineNum() {
+    public String getOnlineNum() {
         return onlineNum;
     }
 
-    public void setOnlineNum(int onlineNum) {
+    public void setOnlineNum(String onlineNum) {
         this.onlineNum = onlineNum;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
     }
 
     public String getFansNum() {

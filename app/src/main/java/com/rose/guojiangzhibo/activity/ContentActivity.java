@@ -44,11 +44,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.OnClick;
-
-import static android.R.attr.bitmap;
-import static android.R.id.edit;
-import static com.rose.guojiangzhibo.R.id.view;
 
 
 public class ContentActivity extends AppCompatActivity implements View.OnClickListener {
