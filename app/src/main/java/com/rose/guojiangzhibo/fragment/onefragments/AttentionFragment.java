@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.urlconfig.RtmpURL;
+import com.rose.guojiangzhibo.util.CheckUtil;
 import com.rose.guojiangzhibo.util.ToastUtils;
 import com.tencent.rtmp.ITXLivePlayListener;
 import com.tencent.rtmp.TXLiveConstants;
@@ -26,8 +28,8 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
     private TXLivePlayer mLivePlayer;
     private boolean pauseflag = true;
     private TXCloudVideoView mPlayerView;
-    private String flvUrl = "http://8935.liveplay.myqcloud.com/live/8935_fc0daa33f6.flv";
     private TXLivePlayConfig mPlayConfig;
+    private String flvUrl;
 
     public AttentionFragment() {
         // Required empty public constructor
@@ -54,10 +56,13 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
         mLivePlayer.setPlayerView(mPlayerView);
         mPlayConfig = new TXLivePlayConfig();
 
+         flvUrl = RtmpURL.getPlayUrl_flv();
+        if (!CheckUtil.isEmpty(flvUrl)) {
+            mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV);
+            mLivePlayer.setRenderMode(0);
+            mLivePlayer.setPlayListener(new MyListener());
 
-        mLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV);
-        mLivePlayer.setRenderMode(0);
-        mLivePlayer.setPlayListener(new MyListener());
+        }
 
         //自动模式
         mPlayConfig.setAutoAdjustCacheTime(true);

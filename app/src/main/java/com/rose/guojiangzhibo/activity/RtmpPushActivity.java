@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.urlconfig.RtmpURL;
+import com.rose.guojiangzhibo.util.CheckUtil;
 import com.tencent.rtmp.TXLivePushConfig;
 import com.tencent.rtmp.TXLivePusher;
 import com.tencent.rtmp.ui.TXCloudVideoView;
@@ -66,12 +68,14 @@ public class RtmpPushActivity extends AppCompatActivity {
         txLivePusher = new TXLivePusher(this);
         myLivePushConfig = new TXLivePushConfig();
         txLivePusher.setConfig(myLivePushConfig);
-        String rtmpUrl = "rtmp://8935.livepush.myqcloud.com/live/8935_fc0daa33f6?bizid=8935&txSecret=7726e067f02a430e5bacb7ef161ea333&txTime=58F7897F";
-        txLivePusher.startPusher(rtmpUrl);
-        txCloudVideoView = (TXCloudVideoView) findViewById(R.id.video_view);
-        txLivePusher.setBeautyFilter(3, 2);
-        txLivePusher.startCameraPreview(txCloudVideoView);
-        startTime();
+        String rtmpUrl = RtmpURL.getRtmpUrl();
+        if (!CheckUtil.isEmpty(rtmpUrl)) {
+            txLivePusher.startPusher(rtmpUrl);
+            txCloudVideoView = (TXCloudVideoView) findViewById(R.id.video_view);
+            txLivePusher.setBeautyFilter(3, 2);
+            txLivePusher.startCameraPreview(txCloudVideoView);
+            startTime();
+        }
     }
 
     private void startTime() {

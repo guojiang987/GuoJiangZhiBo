@@ -40,7 +40,7 @@
         android:layout_below="@id/nikename_push"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/time_push"
-        android:text="203人观看"
+        android:text="100+观看"
         android:textColor="#ffcccccc" />
 
     <ImageButton
