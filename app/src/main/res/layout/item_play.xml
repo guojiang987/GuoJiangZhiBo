@@ -4,12 +4,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <com.baidu.cyberplayer.core.BVideoView
-        android:id="@+id/video_view"
+    <com.tencent.rtmp.ui.TXCloudVideoView
+        android:id="@+id/txCloudVideoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_height="match_parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,11 +44,11 @@
             android:textSize="12sp" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/text_name"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
             android:src="@mipmap/btn_live_focus_normal" />
 
         <TextView
@@ -65,6 +63,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/text_paopaonumber"
             android:paddingTop="60dp"
             android:src="@mipmap/ic_icon_p_arrow" />
@@ -89,12 +88,12 @@
             android:src="@mipmap/btn_close_nor" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="165dp"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
             android:layout_alignParentRight="true"
-            android:layout_toLeftOf="@+id/image_more"
-            android:paddingRight="10dp"
-            android:paddingTop="40dp"
+            android:layout_below="@+id/image_close"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:src="@mipmap/rc_ic_star_hover" />
 
     </RelativeLayout>
@@ -124,34 +123,31 @@
 
             <ImageView
                 android:id="@+id/image_flowerplay"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:paddingRight="10dp"
+                android:layout_marginRight="5dp"
                 android:src="@mipmap/btn_flower_foot_nor" />
 
             <ImageView
                 android:id="@+id/image_gift"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:paddingRight="30dp"
+                android:layout_toLeftOf="@+id/image_flowerplay"
                 android:src="@mipmap/btn_gift_foot_nor" />
 
             <ImageView
                 android:id="@+id/image_shareplay"
-                android:layout_width="275dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:paddingRight="30dp"
+                android:layout_toLeftOf="@+id/image_gift"
                 android:src="@mipmap/btn_share_nor" />
 
             <ImageView
                 android:id="@+id/image_messageplay"
-                android:layout_width="450dp"
+                android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_alignParentRight="true"
-                android:paddingRight="55dp"
+                android:layout_toLeftOf="@+id/image_shareplay"
                 android:src="@mipmap/btn_chat_message_nor" />
 
         </RelativeLayout>

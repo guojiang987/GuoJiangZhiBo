@@ -301,7 +301,7 @@ public class HotFragment extends Fragment {
             /**
              * 简单检测播放源的合法性,不合法不播放
              */
-            Toast.makeText(getActivity(), "please input your video source",500).show();
+            Toast.makeText(getActivity(), "please input your video source", 500).show();
 
 //            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
             Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
@@ -316,6 +316,7 @@ public class HotFragment extends Fragment {
             intent.putExtra("nickname", oneFragmentData.getNickname());
             intent.putExtra("onlineNum", oneFragmentData.getOnlineNum());
             intent.putExtra("mid", oneFragmentData.getMid());
+            intent.putExtra("source", source);
             startActivityForResult(intent, 123);
         }
     }

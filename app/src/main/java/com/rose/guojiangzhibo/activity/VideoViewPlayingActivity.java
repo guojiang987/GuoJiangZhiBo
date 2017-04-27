@@ -6,11 +6,15 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.rose.guojiangzhibo.R;
+import com.rose.guojiangzhibo.util.Tools;
+import com.tencent.rtmp.TXLivePlayer;
+import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import org.xutils.common.Callback;
 import org.xutils.x;
@@ -21,7 +25,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 import static com.rose.guojiangzhibo.CircleBitmapTool.toRoundBitmap;
 
 
-public class VideoViewPlayingActivity extends Activity {
+public class VideoViewPlayingActivity extends Activity implements View.OnClickListener {
     private void initView() {
         text_name = (TextView) findViewById(R.id.text_name);
         text_personnumber = (TextView) findViewById(R.id.text_personnumber);
@@ -33,6 +37,8 @@ public class VideoViewPlayingActivity extends Activity {
         image_flowerplay = (ImageView) findViewById(R.id.image_flowerplay);
         image_gift = (ImageView) findViewById(R.id.image_gift);
         image_shareplay = (ImageView) findViewById(R.id.image_shareplay);
+        listview_oneplayer = (ListView) findViewById(R.id.listview_oneplayer);
+        txCloudVideoView = (TXCloudVideoView) findViewById(R.id.txCloudVideoView);
     }
 
     private final String TAG = "VideoViewPlayingActivity";
@@ -44,6 +50,7 @@ public class VideoViewPlayingActivity extends Activity {
     //弹幕
     private ListView listview_oneplayer;
     //接收fragment传过来的值
+    private TXCloudVideoView txCloudVideoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +67,38 @@ public class VideoViewPlayingActivity extends Activity {
         text_name.setText(data.getStringExtra("nickname"));
         text_personnumber.setText("观众" + data.getStringExtra("onlineNum") + "人");
         text_paopaonumber.setText("泡泡数" + data.getStringExtra("mid"));
+        String flvUrl = data.getStringExtra("source");
+        Tools.d("播放地址：" + flvUrl);
+        image_header.setOnClickListener(this);
+        image_more.setOnClickListener(this);
+        image_close.setOnClickListener(this);
+        image_talkplay.setOnClickListener(this);
+        image_flowerplay.setOnClickListener(this);
+        image_gift.setOnClickListener(this);
+        image_shareplay.setOnClickListener(this);
+        TXLivePlayer txLivePlayer = new TXLivePlayer(this);
+        txLivePlayer.setPlayerView(txCloudVideoView);
+        txLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);
+    }
 
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.image_header:
+                break;
+            case R.id.image_close:
+                break;
+            case R.id.image_gift:
+                break;
+            case R.id.image_flowerplay:
+                break;
+            case R.id.image_more:
+                break;
+            case R.id.image_shareplay:
+                showShare();
+                break;
+        }
     }
 
     //分享
