@@ -1,14 +1,13 @@
 package com.rose.guojiangzhibo.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.rose.guojiangzhibo.R;
-import com.rose.guojiangzhibo.urlconfig.SplashURL;
 import com.rose.guojiangzhibo.util.SharePreferenceUtil;
 import com.squareup.picasso.Picasso;
 
@@ -22,15 +21,13 @@ public class SplashActivity extends AppCompatActivity implements Handler.Callbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         init();
-        Picasso.with(this).load(SplashURL.getPic()).error(R.mipmap.ic_launcher).into(imageView);
+        Picasso.with(this).load(R.drawable.splash).into(imageView);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 handler.sendEmptyMessageDelayed(0, 3000);
             }
         }).start();
-
-
     }
 
     private void init() {
@@ -57,7 +54,6 @@ public class SplashActivity extends AppCompatActivity implements Handler.Callbac
                 startActivity(intent);
                 finish();
             }
-
         }
         return false;
     }
