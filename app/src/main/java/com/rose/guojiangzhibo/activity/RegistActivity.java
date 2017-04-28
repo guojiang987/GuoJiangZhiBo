@@ -48,12 +48,12 @@ public class RegistActivity extends AppCompatActivity {
         String rpasswordagain = editpassagain.getText() + "";
         try {
             List<User> userall = dbManager.findAll(User.class);
-            // for (int i = 0; i < userall.size(); i++) {
-            //  if ((userall.get(i).getUsername() + "").equals(rusername)) {
-            //    Toast.makeText(this, "账号已存在", Toast.LENGTH_SHORT).show();
-            //  return;
-            //}
-            //  }
+             for (int i = 0; i < userall.size(); i++) {
+              if ((userall.get(i).getUsername() + "").equals(rusername)) {
+                Toast.makeText(this, "账号已存在", Toast.LENGTH_SHORT).show();
+              return;
+            }
+              }
             if (rusername != null && rpassword.equals(rpasswordagain)) {
                 addData(rusername, rpassword);
                 Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
