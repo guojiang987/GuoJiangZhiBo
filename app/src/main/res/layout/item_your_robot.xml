@@ -8,15 +8,15 @@
         android:id="@+id/img_your_robot"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@mipmap/kefu" />
+        android:src="@mipmap/icon_logo" />
 
     <TextView
         android:id="@+id/text_your_robot"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_toRightOf="@+id/img_your_robot"
-        android:background="@drawable/ah5"
         android:gravity="center|left"
-        android:text="woqunidayede " />
+        android:text=""
+        android:textSize="20sp"/>
 
 </RelativeLayout>

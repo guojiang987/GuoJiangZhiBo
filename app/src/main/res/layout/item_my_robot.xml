@@ -10,14 +10,15 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/kefu" />
 
     <TextView
         android:id="@+id/text_my_robot"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:gravity="center|right"
-        android:textColor="#fff"
+        android:textSize="20sp"
+        android:text="abc"
         android:layout_toStartOf="@+id/img_my_robot" />
 
 </RelativeLayout>
