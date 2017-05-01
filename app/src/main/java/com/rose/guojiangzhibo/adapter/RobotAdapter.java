@@ -58,13 +58,11 @@ public class RobotAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MyTypeHolder) {
-            ((MyTypeHolder) holder).img.setImageResource(R.mipmap.icon_logo);
             ((MyTypeHolder) holder).text.setText(((MyMessage) list.get(position))
                     .getContext());
         } else if (holder instanceof YourTypeHolder) {
             ((YourTypeHolder) holder).text2.setText(((YourMessage) list.get(position))
                     .getContext());
-            ((YourTypeHolder) holder).img2.setImageResource(R.mipmap.kefu);
 
         }
     }
