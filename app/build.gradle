@@ -49,4 +49,6 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     testCompile 'junit:junit:4.12'
     compile files('src/main/jniLibs/txrtmpsdk.jar')
+    compile files('build/intermediates/jniLibs/debug/classes.jar')
+    compile files('build/intermediates/exploded-aar/com.github.ctiao/dfm/0.4.4/jars/classes.jar')
 }

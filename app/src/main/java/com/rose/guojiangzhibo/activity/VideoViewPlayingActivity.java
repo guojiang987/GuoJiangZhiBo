@@ -51,6 +51,7 @@ public class VideoViewPlayingActivity extends Activity implements View.OnClickLi
     private ListView listview_oneplayer;
     //接收fragment传过来的值
     private TXCloudVideoView txCloudVideoView;
+    private TXLivePlayer txLivePlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class VideoViewPlayingActivity extends Activity implements View.OnClickLi
         image_flowerplay.setOnClickListener(this);
         image_gift.setOnClickListener(this);
         image_shareplay.setOnClickListener(this);
-        TXLivePlayer txLivePlayer = new TXLivePlayer(this);
+        txLivePlayer = new TXLivePlayer(this);
         txLivePlayer.setPlayerView(txCloudVideoView);
         txLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_RTMP);
     }
@@ -99,6 +100,26 @@ public class VideoViewPlayingActivity extends Activity implements View.OnClickLi
                 showShare();
                 break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // 暂停
+        txLivePlayer.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        txLivePlayer.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        txLivePlayer.stopPlay(true);
+        txCloudVideoView.onDestroy();
     }
 
     //分享
