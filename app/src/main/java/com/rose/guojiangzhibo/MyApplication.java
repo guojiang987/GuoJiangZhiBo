@@ -7,7 +7,7 @@ import org.xutils.x;
 
 import java.io.File;
 
-import static android.view.View.X;
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by I on 2016/10/17.
@@ -26,6 +26,9 @@ public class MyApplication extends Application {
         //设置是否输出debug
         x.Ext.setDebug(true);
         setDaoConfig();
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
     }
 
     private void setDaoConfig() {

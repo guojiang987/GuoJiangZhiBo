@@ -31,6 +31,7 @@ import com.rose.guojiangzhibo.activity.IncomeActivity;
 import com.rose.guojiangzhibo.activity.RobotActivity;
 import com.rose.guojiangzhibo.bean.CricleFour;
 import com.rose.guojiangzhibo.customclass.RoundHeader;
+import com.rose.guojiangzhibo.urlconfig.FourConfig;
 import com.rose.guojiangzhibo.urlconfig.UrlConfigOne;
 
 import org.xutils.common.Callback;
@@ -166,7 +167,8 @@ public class FourFragment extends Fragment {
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
         oks.disableSSOWhenAuthorize();
-
+        String ImageUrl = FourConfig.getShareUrl();
+        oks.setImageUrl(ImageUrl);
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
         oks.setTitle("果酱直播");
         // titleUrl是标题的网络链接，QQ和QQ空间等使用

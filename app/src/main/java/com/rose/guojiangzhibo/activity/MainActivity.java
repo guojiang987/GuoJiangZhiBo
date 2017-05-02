@@ -17,6 +17,8 @@ import com.rose.guojiangzhibo.fragment.ThreeFragment;
 import com.rose.guojiangzhibo.fragment.TwoFragment;
 import com.umeng.analytics.MobclickAgent;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener, View.OnClickListener {
 
     private RadioGroup rgMenus;
@@ -46,9 +48,15 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             fragmentTransactionInit.add(R.id.framelayout_main, oneFragment);
         }
         fragmentTransactionInit.commit();
+
+        JPushInterface.setDebugMode(true); 	// 设置开启日志,发布时请关闭日志
+        JPushInterface.init(this);
     }
 
     private void initView() {
+
+
+
         rgMenus = (RadioGroup) findViewById(R.id.rg_main_menus);
         rgMenus.setOnCheckedChangeListener(this);
         fragmentManager = getSupportFragmentManager();

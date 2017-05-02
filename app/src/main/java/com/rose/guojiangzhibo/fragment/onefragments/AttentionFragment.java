@@ -32,7 +32,7 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
     private TXLivePlayConfig mPlayConfig;
     private String flvUrl;
     private boolean mVideoPlay;
-    private int mPlayType = TXLivePlayer.PLAY_TYPE_LIVE_FLV;
+    private int mPlayType = TXLivePlayer.PLAY_TYPE_VOD_FLV;
     private ImageView mLoadingView;
     private boolean mVideoPause = false;
     private boolean mHWDecode = false;
@@ -175,6 +175,7 @@ public class AttentionFragment extends Fragment implements View.OnClickListener 
             // 如下这段代码是处理播放结束的事件
             else if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT
                     || event == TXLiveConstants.PLAY_EVT_PLAY_END) {
+                ToastUtils.showToas(getActivity(), "暂无视频流，播放结束");
 //                stopPlayRtmp();
 //                mVideoPlay = false;
                 onDestroy();
