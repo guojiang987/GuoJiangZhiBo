@@ -297,19 +297,30 @@ public class HotFragment extends Fragment {
 
     private void playVideo(OneFragmentData oneFragmentData) {
         String source = oneFragmentData.getVideoPlayUrl();
-        if (source == null || source.equals("")) {
-            /**
-             * 简单检测播放源的合法性,不合法不播放
-             */
-            Toast.makeText(getActivity(), "please input your video source", 500).show();
-
-//            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
-            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
-            intent.setData(Uri.parse(source));
-            intent.putExtra("rid", oneFragmentData.getRid());
-//            intent.putExtra("headerPic",oneFragmentDatasList.get(position).getHeadPic());
-            startActivityForResult(intent, 123);
-        } else {
+        boolean isPlaying = oneFragmentData.isIsPlaying();
+//        if (source == null || source.equals("")) {
+//            /**
+//             * 简单检测播放源的合法性,不合法不播放
+//             */
+//            Toast.makeText(getActivity(), "please input your video source", 500).show();
+//
+////            source = "http://devimages.apple.com/iphone/samples/bipbop/gear4/prog_index.m3u8";
+//            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
+//            intent.setData(Uri.parse(source));
+//            intent.putExtra("rid", oneFragmentData.getRid());
+////            intent.putExtra("headerPic",oneFragmentDatasList.get(position).getHeadPic());
+//            startActivityForResult(intent, 123);
+//        } else {
+//            Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
+//            intent.putExtra("rid", oneFragmentData.getRid());
+//            intent.putExtra("headerPic", oneFragmentData.getHeadPic());
+//            intent.putExtra("nickname", oneFragmentData.getNickname());
+//            intent.putExtra("onlineNum", oneFragmentData.getOnlineNum());
+//            intent.putExtra("mid", oneFragmentData.getMid());
+//            intent.putExtra("source", source);
+//            startActivityForResult(intent, 123);
+//        }
+        if (isPlaying) {
             Intent intent = new Intent(getActivity(), VideoViewPlayingActivity.class);
             intent.putExtra("rid", oneFragmentData.getRid());
             intent.putExtra("headerPic", oneFragmentData.getHeadPic());
@@ -317,7 +328,9 @@ public class HotFragment extends Fragment {
             intent.putExtra("onlineNum", oneFragmentData.getOnlineNum());
             intent.putExtra("mid", oneFragmentData.getMid());
             intent.putExtra("source", source);
-            startActivityForResult(intent, 123);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), "亲，再等等吧，主播正在休息呢", Toast.LENGTH_SHORT).show();
         }
     }
 
